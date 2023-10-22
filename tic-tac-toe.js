@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let turn = 0;
     var display = document.getElementById("status");
     let stat = false;
+    var reset = document.querySelector(".btn");
 
     for (let i=0; i<gameboard.length; i++){
         const element = gameboard[i];
@@ -38,6 +39,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 turn++;
             }
         });
+
+        reset.addEventListener("click", function(){
+            stat = false;
+            element.textContent = "";
+            turn = 0;
+            gameTrackX = [];
+            gameTrackO = [];
+            display.textContent = "Move your mouse over a square and click to play an X or an O.";
+            display.classList.remove("status", "you-won");
+            display.classList.add("status");
+        });
         
     }
 
@@ -62,7 +74,7 @@ function winner(dpy, gameTrack, ltr){
         let move3 = winMoves[i][2];
 
         if (gameTrack.includes(move1) && gameTrack.includes(move2) && gameTrack.includes(move3)){
-            dpy.textContent = "Congratulations";
+            dpy.textContent = "Congratulations! " + ltr + " is the Winner!";
             dpy.classList.add("status", "you-won");
             return true;
         }
