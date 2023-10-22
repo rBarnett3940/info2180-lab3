@@ -9,6 +9,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         element.setAttribute("class", "square");
 
 
+        element.addEventListener("mouseover", function(){
+            element.classList.add("hover");
+        })
+
+        element.addEventListener("mouseout", function(){
+            element.classList.remove("hover");
+        })
+
+
         element.addEventListener("click", function(){
             if (turn % 2 == 0){
                 element.textContent = "X";
