@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         
         element.addEventListener("click", function(){
-            if(stat == false){
+            if(!element.textContent && stat == false){
                 if (turn % 2 == 0){
                     element.textContent = "X";
                     element.classList.add("square", "X");
@@ -48,7 +48,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             gameTrackO = [];
             display.textContent = "Move your mouse over a square and click to play an X or an O.";
             display.classList.remove("status", "you-won");
+            element.classList.remove("X");
+            element.classList.remove("O");
             display.classList.add("status");
+            
         });
         
     }
